@@ -1,0 +1,2 @@
+<app-header [cartProductsIds]="(cartProducts$ | async)!" [products]="(products$ |async)!" (remove)="onRemove($event)"></app-header>
+<router-outlet></router-outlet>

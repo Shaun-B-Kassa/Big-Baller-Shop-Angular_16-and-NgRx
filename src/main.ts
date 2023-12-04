@@ -1,7 +1,18 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { bootstrapApplication } from "@angular/platform-browser";
+import { AppComponent } from "./app/app.component";
+import { provideRouter } from '@angular/router';
+import { routes } from './app/app.routes'
+import { importProvidersFrom } from "@angular/core";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { CommonModule } from "@angular/common";
+import { provideStore } from '@ngrx/store';
 
-import { AppModule } from './app/app.module';
+//Reducers
+import { productsReducer } from "./app/components/shared/state/products.reducer";
+import { cartReducer } from "./app/components/shared/state/cart.reducers";
 
-
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+bootstrapApplication(AppComponent, {providers:[
+    provideRouter(routes),
+    provideStore({products: productsReducer, cart: cartReducer}),
+    importProvidersFrom([BrowserAnimationsModule]),
+]})

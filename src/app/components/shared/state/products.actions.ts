@@ -4,8 +4,8 @@ import { Product } from '../models/product-list.model'
 export const ProductsActions = createActionGroup({
     source: 'Products',
     events: {
-        'Add Product': props<{productId: string}>(),
-        'Remove Product': props<{productId: string}>()
+        'Add Product': props<{productId: number}>(),
+        'Remove Product': props<{productId: number}>()
     }
 })
 

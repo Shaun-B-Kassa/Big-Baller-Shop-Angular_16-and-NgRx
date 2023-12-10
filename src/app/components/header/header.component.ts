@@ -20,13 +20,12 @@ import { Product } from "../shared/models/product-list.model";
 })
 export class HeaderComponent  {
 
-  @Input() cartProductsIds: ReadonlyArray<string> = [];
+  @Input() cartProductsIds: ReadonlyArray<number> = [];
   @Input() products: ReadonlyArray<Product> = []
-  @Output() remove = new EventEmitter<string>();
+  @Output() remove = new EventEmitter<number>();
   cartItems: Product[] = [];
 
   constructor(){
-    this.cartItems = this.products.filter(items => this.cartProductsIds.indexOf(items.id) !== -1)
   }
 
 

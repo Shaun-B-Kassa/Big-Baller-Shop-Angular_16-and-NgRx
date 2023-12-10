@@ -15,6 +15,8 @@ import { Store } from '@ngrx/store';
 import { ProductsService } from '../../shared/services/products.service';
 import { selectCartState, selectProducts } from '../../shared/state/products.selectors';
 import { ProductsActions, ProductsApplication } from '../../shared/state/products.actions';
+import { Product, ProductList } from '../../shared/models/product-list.model';
+import { Observable } from 'rxjs';
 
 const ROWS_HEIGHT:{[id:number]: number} = {
   1: 400,
@@ -29,20 +31,21 @@ const ROWS_HEIGHT:{[id:number]: number} = {
     styles: [],
     imports: [MatSidenavModule,CommonModule, MatButtonModule, ProductHeaderComponent, FilterComponent, MatGridListModule, ProductBoxComponent, CartComponent]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent  {
  cols: number = 3;
  rowHeight: number = ROWS_HEIGHT[this.cols];
  selectedCategory: string | undefined;
 
   products$ = this.store.select(selectProducts)
   cartProducts$ = this.store.select(selectCartState)
+  filterdItmes: Product[] = []
 
-  onAdd(productId: string) {
+  onAdd(productId: number) {
     console.log(productId)
     this.store.dispatch(ProductsActions.addProduct({ productId }))
   }
 
-  onRemove(productId: string) {
+  onRemove(productId: number) {
     this.store.dispatch(ProductsActions.removeProduct({ productId }))
   }
 
@@ -61,6 +64,7 @@ export class HomeComponent implements OnInit {
   }
 
   onShowCategory(category: string) {
-    this.selectedCategory = category;
+    this.productService.getProducts(category)
+    console.log(this.filterdItmes)
   }
 }

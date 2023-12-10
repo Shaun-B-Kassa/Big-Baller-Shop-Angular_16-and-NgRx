@@ -2,6 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, Output, OnInit,EventEmitter } from '@angular/core';
 import { MatExpansionModule} from '@angular/material/expansion'
 import { MatListModule} from '@angular/material/list'
+import { Observable, tap } from 'rxjs';
+import { Product } from 'src/app/components/shared/models/product-list.model';
+import { ProductsService } from 'src/app/components/shared/services/products.service';
 @Component({
   selector: 'app-filter',
   templateUrl:'filter.component.html',
@@ -10,18 +13,23 @@ import { MatListModule} from '@angular/material/list'
   styles: [
   ]
 })
-export class FilterComponent implements OnInit{
+export class FilterComponent {
 
   @Output() categoryChange = new EventEmitter<string>();
+  categories: Array<string> = [];
+  filterdItmes: Product[] = []
 
-  categories: string[] = ['Shoes', 'Pants', 'Watches'];
 
-  ngOnInit(): void {
+  constructor(private productService: ProductsService) {
+      this.productService.getFilters().subscribe(filters => {
+        this.categories = filters
+      })
+  }
+
+
+  onCategoryChange(category: string) {
+    console.log('Calling')
     
+    this.productService.getProducts(category)
   }
-
-  onCategoryChange(category: string): void {
-    this.categoryChange.emit(category)
-  }
-
 }

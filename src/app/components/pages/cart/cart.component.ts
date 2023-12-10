@@ -32,7 +32,6 @@ export class CartComponent {
   cartItems: Product[] = [];
 
   constructor(){
-    this.cartItems = this.products.filter(items => this.cartProductsIds.indexOf(items.id) === -1)
   }
 
 

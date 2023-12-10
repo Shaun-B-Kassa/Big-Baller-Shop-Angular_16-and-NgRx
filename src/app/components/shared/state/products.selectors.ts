@@ -2,7 +2,7 @@ import { createSelector, createFeatureSelector } from "@ngrx/store";
 import { Product } from "../models/product-list.model";
 
 export const selectProducts = createFeatureSelector<ReadonlyArray<Product>>('products')
-export const selectCartState = createFeatureSelector<ReadonlyArray<string>>('cart')
+export const selectCartState = createFeatureSelector<ReadonlyArray<number>>('cart')
 
 
 export const selectCartProducts = createSelector(

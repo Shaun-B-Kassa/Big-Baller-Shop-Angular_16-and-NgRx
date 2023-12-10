@@ -2,7 +2,7 @@ import { createReducer, on } from "@ngrx/store";
 
 import { ProductsActions } from "./products.actions";
 
-const initialState: ReadonlyArray<string> = []
+const initialState: ReadonlyArray<number> = []
 
 export const  cartReducer = createReducer(
     initialState,

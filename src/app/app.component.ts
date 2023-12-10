@@ -26,20 +26,20 @@ export class AppComponent implements OnInit {
   products$ = this.store.select(selectProducts)
   cartProducts$ = this.store.select(selectCartState)
 
-  onAdd(productId: string) {
+  onAdd(productId: number) {
     this.store.dispatch(ProductsActions.addProduct({ productId }))
   }
 
-  onRemove(productId: string) {
+  onRemove(productId: number) {
     this.store.dispatch(ProductsActions.removeProduct({ productId }))
   }
 
   constructor(private productService: ProductsService, private store: Store){}
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe((products) => {
-      this.store.dispatch(ProductsApplication.retrivedProductList({ products }))
-    })
+    // this.productService.getProducts().subscribe((products) => {
+    //   this.store.dispatch(ProductsApplication.retrivedProductList({ products }))
+    // })
   }
 
 

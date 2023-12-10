@@ -14,7 +14,11 @@ import { Product } from 'src/app/components/shared/models/product-list.model';
 })
 export class ProductBoxComponent {
   @Input() fullWidthMode: boolean = false;
-  @Input() product = {};
-  @Output() add = new EventEmitter<string>()
+  @Input({required: true}) product = {} as Product;
+  @Output() add = new EventEmitter<number>();
+
+  constructor() {
+    this.product
+  }
 
 }

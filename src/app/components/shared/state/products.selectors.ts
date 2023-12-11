@@ -1,8 +1,9 @@
 import { createSelector, createFeatureSelector } from "@ngrx/store";
-import { Product } from "../models/product-list.model";
+import { Product } from "../models/product.model";
 
-export const selectProducts = createFeatureSelector<ReadonlyArray<Product>>('products')
-export const selectCartState = createFeatureSelector<ReadonlyArray<number>>('cart')
+export const selectProducts = createFeatureSelector<Array<Product>>('products')
+export const selectFiltersState = createFeatureSelector<Array<string>>('filters')
+export const selectCartState = createFeatureSelector<Array<number>>('cart')
 
 
 export const selectCartProducts = createSelector(
@@ -12,3 +13,4 @@ export const selectCartProducts = createSelector(
         return cart.map((id) => products.find((product) => product.id === id)!)
     }
 )
+

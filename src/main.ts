@@ -8,13 +8,13 @@ import { CommonModule } from "@angular/common";
 import { provideStore } from '@ngrx/store';
 
 //Reducers
-import { productsReducer } from "./app/components/shared/state/products.reducer";
+import { filtersReducer, productsReducer } from "./app/components/shared/state/products.reducer";
 import { cartReducer } from "./app/components/shared/state/cart.reducers";
 import { provideHttpClient } from "@angular/common/http";
 
 bootstrapApplication(AppComponent, {providers:[
     provideRouter(routes),
-    provideStore({products: productsReducer, cart: cartReducer}),
+    provideStore({products: productsReducer, cart: cartReducer, filters: filtersReducer}),
     provideHttpClient(),
     importProvidersFrom([BrowserAnimationsModule]),
 ]})

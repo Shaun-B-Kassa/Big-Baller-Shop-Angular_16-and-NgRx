@@ -15,16 +15,17 @@ import { MatButtonModule } from '@angular/material/button'
 export class ProductHeaderComponent implements OnInit {
 
   @Output() numberOfColumsChanged = new EventEmitter<number>();
+  @Output() sortProductsChanged = new EventEmitter<string>();
   numberOfColums: number = 3;
 
   ngOnInit() {
   }
   
-  sort: string = 'desc';
+  sort: string = 'Price';
   showItems: number = 4;
 
   onSortUpdate(updateSort: string):void {
-
+    this.sortProductsChanged.emit(updateSort)
   }
   onItemsUpdate(numberOfItems: number):void {
 

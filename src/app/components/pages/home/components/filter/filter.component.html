@@ -1,12 +1,17 @@
-<mat-expansion-panel *ngIf="categories">
-    <mat-expansion-panel-header>
-        <mat-panel-title>
-            Filter
-        </mat-panel-title>
-    </mat-expansion-panel-header>
-    <mat-selection-list [multiple]="false">
-        <mat-list-option *ngFor ="let category of categories; let i = index" [value]="category">
-            <button>{{category}}</button>
-        </mat-list-option>
-    </mat-selection-list>   
-</mat-expansion-panel>
+@if (filters){
+    <mat-expansion-panel >
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Filter
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-selection-list [multiple]="false">
+            @for (item of filters; track filters.indexOf(item)) {
+            <mat-list-option  [value]="item">
+                <button (click)="onCategoryChange(item)">{{item}}</button>
+            </mat-list-option>
+            }
+        </mat-selection-list>   
+    </mat-expansion-panel>
+}
+

@@ -9,7 +9,7 @@ import { HeaderComponent } from './components/header/header.component'
 //NgRx Imports
 import { Store } from '@ngrx/store';
 import { ProductsService } from './components/shared/services/products.service';
-import { selectCartState, selectProducts } from './components/shared/state/products.selectors';
+import { selectCartState, selectFiltersState, selectProducts } from './components/shared/state/products.selectors';
 import { ProductsActions, ProductsApplication } from './components/shared/state/products.actions';
 
 @Component({
@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
 
   products$ = this.store.select(selectProducts)
   cartProducts$ = this.store.select(selectCartState)
+  filter$ = this.store.select(selectFiltersState)
 
   onAdd(productId: number) {
     this.store.dispatch(ProductsActions.addProduct({ productId }))

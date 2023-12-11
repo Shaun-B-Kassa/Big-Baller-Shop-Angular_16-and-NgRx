@@ -7,7 +7,7 @@ import { MatTableModule } from "@angular/material/table";
 import { MatIconModule } from "@angular/material/icon";
 import { Cart, } from "../../shared/models/cart.model";
 import { RouterLink } from "@angular/router";
-import { Product } from "../../shared/models/product-list.model";
+import { Product } from "../../shared/models/product.model";
 
 @Component({
   selector: "app-cart",
@@ -26,8 +26,8 @@ import { Product } from "../../shared/models/product-list.model";
 
 export class CartComponent {
 
-  @Input() cartProductsIds: ReadonlyArray<string> = [];
-  @Input() products: ReadonlyArray<Product> = []
+  @Input() cartProductsIds: Array<string> = [];
+  @Input() products: Array<Product> = []
   @Output() remove = new EventEmitter<string>();
   cartItems: Product[] = [];
 

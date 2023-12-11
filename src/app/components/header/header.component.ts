@@ -9,7 +9,7 @@ import { RouterLink } from "@angular/router";
 import {ExponentialStrength} from "../shared/pipes/exponential-strength.pipe"
 // import { CartItems, Cart } from "../shared/models/cart.model";
 import { Observable } from "rxjs";
-import { Product } from "../shared/models/product-list.model";
+import { Product } from "../shared/models/product.model";
 
 @Component({
   selector: "app-header",
@@ -20,8 +20,8 @@ import { Product } from "../shared/models/product-list.model";
 })
 export class HeaderComponent  {
 
-  @Input() cartProductsIds: ReadonlyArray<number> = [];
-  @Input() products: ReadonlyArray<Product> = []
+  @Input() cartProductsIds: Array<number> = [];
+  @Input() products: Array<Product> = []
   @Output() remove = new EventEmitter<number>();
   cartItems: Product[] = [];
 

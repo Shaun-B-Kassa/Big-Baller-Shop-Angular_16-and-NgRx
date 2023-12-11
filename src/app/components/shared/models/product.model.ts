@@ -11,6 +11,3 @@ export interface Product {
   };
 }
 
-export interface ProductList {
-  productList: Product[];
-}

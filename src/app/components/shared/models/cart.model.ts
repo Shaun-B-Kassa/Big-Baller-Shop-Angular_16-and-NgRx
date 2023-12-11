@@ -1,4 +1,4 @@
-import { Product } from "./product-list.model"
+import { Product } from "./product.model"
 export interface Cart {
     cartItems : Product[]
 }

@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input,Output } from '@angular/core';
 import { CurrencyPipe, CommonModule } from '@angular/common'
 import { MatCardModule } from '@angular/material/card'
 import { MatIconModule } from '@angular/material/icon'
-import { Product } from 'src/app/components/shared/models/product-list.model';
+import { Product } from 'src/app/components/shared/models/product.model';
 
 @Component({
   selector: 'app-product-box',
